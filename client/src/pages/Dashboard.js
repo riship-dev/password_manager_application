@@ -14,7 +14,7 @@ function Dashboard() {
         const fetchPasswords = async () => {
             try {
                 const TOKEN = localStorage.getItem("TOKEN");
-                const response = await axios.get("/api/passwords", {
+                const response = await axios.get("http://localhost:5000/api/passwords", {
                     headers: { Authorization: `Bearer ${TOKEN}` },
                 });
                 setPasswords(response.data);
@@ -30,7 +30,7 @@ function Dashboard() {
         e.preventDefault();
         try {
             const TOKEN = localStorage.getItem("TOKEN");
-            await axios.post("/api/passwords", newPassword, {
+            await axios.post("http://localhost:5000/api/passwords", newPassword, {
                 headers: { Authorization: `Bearer ${TOKEN}` },
             });
             setNewPassword({ service_name: "", service_username: "", service_password: "", notes: "" });
@@ -43,7 +43,7 @@ function Dashboard() {
     const handleDeletePassword = async (id) => {
         try {
             const TOKEN = localStorage.getItem("TOKEN");
-            await axios.delete(`/api/passwords/${id}`, {
+            await axios.delete(`http://localhost:5000/api/passwords/${id}`, {
                 headers: { Authorization: `Bearer ${TOKEN}` },
             });
             window.location.reload();
