@@ -19,6 +19,10 @@ function Register() {
         }
     };
 
+    const handleLoginRedirect = () => {
+        navigate("/login"); // Navigate to the Login page
+    };
+
     return (
         <div className="container">
             <h2>Register</h2>
@@ -52,6 +56,9 @@ function Register() {
                     />
                 </div>
                 <button type="submit" className="btn btn-primary">Register</button>
+                <button onClick={handleLoginRedirect} className="btn btn-link">
+                    Already have an account? Login
+                </button>
             </form>
         </div>
     );
