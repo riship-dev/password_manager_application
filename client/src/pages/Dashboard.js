@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Dashboard() {
     const [passwords, setPasswords] = useState([]);
@@ -9,6 +10,7 @@ function Dashboard() {
         service_password: "",
         notes: "",
     });
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchPasswords = async () => {
@@ -34,7 +36,7 @@ function Dashboard() {
                 headers: { Authorization: `Bearer ${TOKEN}` },
             });
             setNewPassword({ service_name: "", service_username: "", service_password: "", notes: "" });
-            window.location.reload();  // Refresh to display new password
+            window.location.reload();
         } catch (err) {
             console.error(err);
         }
@@ -50,6 +52,11 @@ function Dashboard() {
         } catch (err) {
             console.error(err);
         }
+    };
+
+    const handleLogout = () => {
+        localStorage.removeItem("TOKEN");
+        navigate("/login");
     };
 
     return (
@@ -107,6 +114,8 @@ function Dashboard() {
                 </div>
                 <button type="submit" className="btn btn-primary">Add Password</button>
             </form>
+            <br/>
+            <button onClick={handleLogout} className="btn btn-danger mb-3">Logout</button>
         </div>
     );
 }
