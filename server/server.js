@@ -16,7 +16,7 @@ DB.connect()
 const APP = express();
 const PORT = 5000;
 
-APP.use(cors());
+APP.use(cors({ origin: "http://localhost:3000" }));
 APP.use(express.json());
 APP.use("/api/authentication", authenticationRoutes);
 APP.use("/api/passwords", passwordRoutes);
