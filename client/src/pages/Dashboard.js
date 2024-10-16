@@ -67,6 +67,10 @@ function Dashboard() {
                     <li key={password.id} className="list-group-item d-flex justify-content-between">
                         <div>
                             <strong>{password.service_name}</strong> - {password.service_username}
+                            <br />
+                            <strong>Password: </strong> {password.service_password}
+                            <br />
+                            <strong>Notes: </strong> {password.notes}
                         </div>
                         <button onClick={() => handleDeletePassword(password.id)} className="btn btn-danger">
                             Delete
@@ -114,7 +118,7 @@ function Dashboard() {
                 </div>
                 <button type="submit" className="btn btn-primary">Add Password</button>
             </form>
-            <br/>
+            <br />
             <button onClick={handleLogout} className="btn btn-danger mb-3">Logout</button>
         </div>
     );
